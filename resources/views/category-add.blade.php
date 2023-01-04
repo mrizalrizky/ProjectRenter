@@ -3,7 +3,7 @@
 @section('title','Add Category')
 
 @section('content')
-  
+
     <h1>Add New Category</h1>
 
     <div class="mt-5 w-25">
@@ -20,9 +20,10 @@
                 @csrf
                 <div>
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="category Name">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Category Name">
                 </div>
                 <div class="mt-3">
+                    <a href="/categories" class="btn btn-secondary me-3">Back</a>
                     <button class="btn btn-success" type="submit">Save</button>
                 </div>
     </div>

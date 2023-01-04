@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -20,14 +21,23 @@ class CategorySeeder extends Seeder
         Category::truncate();
         Schema::enableForeignKeyConstraints();
 
+
         $data = [
-            'comic', 'novel', 'fantasy', 'fiction', 'mystery', 'horror', 'romance', 'western'
+            ['name' => 'Comic'],
+            ['name' => 'Novel'],
+            ['name' => 'Fantasy'],
+            ['name' => 'Fiction'],
+            ['name' => 'Mystery'],
+            ['name' => 'Horror'],
+            ['name' => 'Romance'],
+            ['name' => 'Western'],
         ];
 
-        foreach($data as $value){
-            Category::insert([
-                'name' => $value
-            ]);
-        }
+        DB::table('categories')->insert($data);
+        // foreach($data as $value){
+        //     Category::insert([
+        //         'name' => $value
+        //     ]);
+        // }
     }
 }

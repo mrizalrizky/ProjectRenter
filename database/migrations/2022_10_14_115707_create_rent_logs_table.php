@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('book_id');
             $table->foreign('book_id')->references('id')->on('books');
             $table->date('rent_date');
-            $table->date('return_date');
+            $table->date('return_date')->nullable();
             $table->date('actual_return_date')->nullable();
             $table->timestamps();
         });

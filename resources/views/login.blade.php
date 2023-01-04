@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    
+
     <div class="main d-flex flex-column justify-content-center align-items-center">
         @if (session('status'))
             <div class="alert alert-danger">
@@ -44,7 +44,7 @@
                     <button type="submit" class="btn btn-primary form-control">Login</button>
                 </div>
                 <div class="text-center">
-                    don't have account? <a href="register">Sign up</a>
+                    Don't have account? <a href="register">Sign Up</a>
                 </div>
             </form>
         </div>

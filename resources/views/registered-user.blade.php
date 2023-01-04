@@ -3,9 +3,9 @@
 @section('title','Users')
 
 @section('content')
-    <h1> New Registered User List</h1>
+    <h1>Unapproved User List</h1>
     <div class="mt-5 d-flex justify-content-end">
-        <a href="/users" class="btn btn-secondary me-3">Approved User List</a>
+        <a href="/users" class="btn btn-secondary me-3">View Approved Users</a>
     </div>
     <div class="my-5">
         <table class="table">
@@ -31,7 +31,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="/user-detail/{{$item->slug}}">detail</a>
+                            <a href="/user-detail/{{$item->slug}}">Detail</a>
                         </td>
                     </tr>
                 @endforeach

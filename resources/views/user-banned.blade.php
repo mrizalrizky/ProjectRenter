@@ -37,7 +37,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="/user-restore/{{$item->slug}}">restore</a>
+                            <a href="/user-restore/{{$item->slug}}">Restore</a>
                         </td>
                        </tr>
                     @endforeach

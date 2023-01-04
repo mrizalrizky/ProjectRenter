@@ -29,11 +29,9 @@ class BookController extends Controller
             $request->file('image')->storeAs('cover', $newName);
         }
 
-        
-      
         $request['cover'] = $newName;
         $book = Book::create($request->all());
-        $book ->categories()->sync($request->categories);
+        $book->categories()->sync($request->categories);
         return redirect('books')->with('status', 'Book Added Successfully!');
     }
 

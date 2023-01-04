@@ -73,7 +73,7 @@ class AuthController extends Controller
         $user = User::create($request->all());
 
         Session::flash('status','success');
-        Session::flash('message','Regist Sucess. Wait admin for approval');
+        Session::flash('message','Register successful. Wait admin for approval');
         return redirect('register');
     }
 }

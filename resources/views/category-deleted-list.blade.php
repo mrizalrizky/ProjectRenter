@@ -17,15 +17,17 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($deletedCategories as $item)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>
-                            <a href="category-restore/{{ $item->slug }}">restore</a>
-                        </td>
-                    </tr>
-                @endforeach
+                @forelse ($deletedCategories as $item)
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$item->name}}</td>
+                    <td>
+                        <a href="category-restore/{{ $item->name }}">Restore</a>
+                    </td>
+                @empty
+                    <td class="text-center" colspan="3">No Data</td>
+                @endforelse
+                </tr>
             </tbody>
         </table>
     </div>

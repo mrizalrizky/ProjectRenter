@@ -6,7 +6,6 @@
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-  
     <h1>Edit Book</h1>
 
     <div class="mt-5 w-25">
@@ -19,7 +18,6 @@
                     </ul>
                 </div>
             @endif
-            
 
             <form action="/book-edit/{{ $book->slug }}" method ="post" enctype="multipart/form-data">
                 {{-- isi tabel --}}
@@ -52,7 +50,7 @@
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
                     <select name="categories[]" id="category" class="form-control select-multiple" multiple>
-                        
+
                       @foreach ($categories as $item)
                           <option value="{{ $item->id }}">{{ $item->name }}</option>
                       @endforeach
@@ -60,7 +58,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="currentCategory" class="form-label">current Category</label>
+                    <label for="currentCategory" class="form-label">Current Category</label>
                     <ul>
                         @foreach ($book->categories as $category)
                             <li>{{ $category->name }}</li>

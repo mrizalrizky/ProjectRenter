@@ -60,9 +60,10 @@
                     <button type="submit" class="btn btn-primary form-control">Register</button>
                 </div>
                 <div class="text-center">
-                Have account?<a href="login">Login</a>
+                    Already have an account?
+                    <a href="login">Login</a>
                 </div>
-            </form>   
+            </form>
         </div>
     </div>
 

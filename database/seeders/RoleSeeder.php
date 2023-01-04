@@ -6,6 +6,7 @@ use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 
 class RoleSeeder extends Seeder
 {
@@ -21,13 +22,16 @@ class RoleSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $data = [
-            'admin', 'client'
+            ['name' => 'Admin'],
+            ['name' => 'Client']
         ];
 
-        foreach($data as $value){
-            Role::insert([
-                'name' => $value
-            ]);
-        }
+        DB::table('roles')->insert($data);
+
+        // foreach($data as $value){
+        //     Role::insert([
+        //         'name' => $value
+        //     ]);
+        // }
     }
 }

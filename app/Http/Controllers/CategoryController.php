@@ -27,34 +27,35 @@ class CategoryController extends Controller
         return redirect('categories')->with('status', 'Category Added Successfully');
     }
 
-    public function edit($slug)
+    public function edit($name)
     {
-        $category = Category::where('slug', $slug)->first();
+        $category = Category::where('name', $name)->first();
+
         return view('category-edit',['category' => $category]);
     }
 
-    public function update(Request $request, $slug)
+    public function update(Request $request, $name)
     {
         $validated = $request->validate([
             'name' => 'required|unique:categories|max:100'
         ]);
 
-        $category = Category::where('slug', $slug)->first();
-        $category->slug =null;
+        $category = Category::where('name', $name)->first();
+        $category->slug = null;
         $category->update($request->all());
         return redirect('categories')->with('status', 'Category updated Successfully');
     }
 
-    public function delete($slug)
+    public function delete($name)
     {
-        $category = Category::where('slug', $slug) -> first();
+        $category = Category::where('name', $name) -> first();
         return view('category-delete', ['category' => $category]);
 
     }
 
-    public function destroy($slug)
+    public function destroy($name)
     {
-        $category = Category::where('slug', $slug) -> first();
+        $category = Category::where('name', $name) -> first();
         $category->delete();
         return redirect('categories')->with('status','Category Deleted Successfully');
     }
@@ -65,9 +66,9 @@ class CategoryController extends Controller
         return view('category-deleted-list', ['deletedCategories' => $deletedCategories]);
     }
 
-    public function restore($slug)
+    public function restore($name)
     {
-        $category = Category::withTrashed()->where('slug', $slug)->first();
+        $category = Category::withTrashed()->where('name', $name)->first();
         $category->restore();
         return redirect('categories')->with('status','Category Restored Successfully');
     }

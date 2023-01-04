@@ -1,9 +1,9 @@
 @extends('layouts.mainlayout')
 
-@section('title','Deleted Category')
+@section('title','Deleted Book List')
 
 @section('content')
-    <h1>Deleted Book List </h1>
+    <h1>Deleted Book List</h1>
     <div class="mt-5 d-flex justify-content-end">
         <a href="/books" class="btn btn-secondary me-3">Back</a>
     </div>
