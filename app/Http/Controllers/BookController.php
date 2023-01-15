@@ -10,12 +10,12 @@ class BookController extends Controller
 {
     public function index(){
         $books = Book::all();
-        return view('book',['books' => $books]);
+        return view('pages.admin.book', compact('books'));
     }
 
     public function add(){
         $categories = Category::all();
-        return view('book-add',['categories' => $categories]);
+        return view('pages.admin.book-add', compact('categories'));
     }
     public function store(Request $request){
         $validated = $request->validate([
@@ -32,7 +32,8 @@ class BookController extends Controller
         $request['cover'] = $newName;
         $book = Book::create($request->all());
         $book->categories()->sync($request->categories);
-        return redirect('books')->with('status', 'Book Added Successfully!');
+
+        return redirect()->route('admin.books')->with('status', 'Book Added Successfully!');
     }
 
     public function edit($slug)
@@ -40,7 +41,7 @@ class BookController extends Controller
         $book = Book::where('slug',$slug)->first();
         $categories = Category::all();
 
-        return view('book-edit',['categories' => $categories, 'book'=>$book]);
+        return view('pages.admin.book-edit', compact('categories', 'book'));
     }
 
     public function update(Request $request, $slug)
@@ -59,32 +60,36 @@ class BookController extends Controller
             $book->categories()->sync($request->categories);
         }
 
-        return redirect('books')->with('status','Book Updated Successfully');
+        return redirect()->route('admin.books')->with('status','Book Updated Successfully');
     }
 
     public function delete($slug)
     {
         $book = Book::where('slug',$slug)->first();
-       return view('book-delete',['book'=>$book]);
+
+       return view('pages.admin.book-delete', compact('book'));
     }
 
     public function destroy($slug)
     {
         $book = Book::where('slug', $slug)->first();
         $book->delete();
-        return redirect('books')->with('status','Book Deleted Successfully');
+
+        return redirect()->route('admin.books')->with('status','Book Deleted Successfully');
     }
 
     public function deletedBook()
     {
         $deletedBooks = Book::onlyTrashed()->get();
-       return view('book-deleted-list',['deletedBooks'=> $deletedBooks]);
+
+       return view('pages.admin.book-deleted-list', compact('deletedBooks'));
     }
 
     public function restore($slug)
     {
         $book = Book::withTrashed()->where('slug',$slug)->first();
         $book->restore();
-        return redirect('books')->with('status','Book Restored Successfully');
+
+        return redirect()->route('admin.books')->with('status','Book Restored Successfully');
     }
 }

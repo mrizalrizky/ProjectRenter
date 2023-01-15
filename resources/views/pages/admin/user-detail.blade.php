@@ -5,8 +5,9 @@
 @section('content')
     <h1> Detail user</h1>
     <div class="mt-5 d-flex justify-content-end">
+        <a href="{{ route('admin.users') }}" class="btn btn-secondary me-3">Back</a>
         @if($user->status == 'inactive')
-            <a href="/user-approve/{{$user->slug}}" class="btn btn-info me-3">Approve User</a>
+            <a href="{{ route('admin.user.approve', $user->slug) }}" class="btn btn-info me-3">Approve User</a>
         @endif
     </div>
 

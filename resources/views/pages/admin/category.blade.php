@@ -27,16 +27,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $item)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>
-                            <a href="category-edit/{{ $item->name }}">Edit</a>
-                            <a href="category-delete/{{$item->name}}">Delete</a>
-                        </td>
-                    </tr>
-                @endforeach
+                @forelse ($categories as $item)
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$item->name}}</td>
+                    <td>
+                        <a href="category-edit/{{ $item->name }}">Edit</a>
+                        <a href="category-delete/{{$item->name}}">Delete</a>
+                    </td>
+                </tr>
+                @empty
+                    <td class="text-center" colspan="3">No Data</td>
+                @endforelse
             </tbody>
         </table>
     </div>

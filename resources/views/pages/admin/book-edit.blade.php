@@ -19,22 +19,22 @@
                 </div>
             @endif
 
-            <form action="/book-edit/{{ $book->slug }}" method ="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.book.edit', $book->slug) }}" method ="post" enctype="multipart/form-data">
                 {{-- isi tabel --}}
                 @csrf
                 <div class="mb-3">
-                    <label for="code" class="form-label">Code</label>
+                    <label for="code" class="form-label">Book Code<strong class="text-danger">*</strong></label>
                     <input type="text" name="book_code" id="code" class="form-control" placeholder="Book's Code"
                     value="{{ $book->book_code }}">
                 </div>
 
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
+                    <label for="title" class="form-label">Book Title<strong class="text-danger">*</strong></label>
                     <input type="text" name="title" id="title" class="form-control" placeholder="Book's Title" value="{{ $book->title }}">
                 </div>
 
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
+                    <label for="image" class="form-label">New Book Image</label>
                     <input type="file" name="image" class="form-control">
                 </div>
 
@@ -68,6 +68,7 @@
 
 
                 <div class="mt-3">
+                    <a href="{{ route('admin.books')}}" class="btn btn-secondary me-3">Back</a>
                     <button class="btn btn-success" type="submit">Save</button>
                 </div>
 

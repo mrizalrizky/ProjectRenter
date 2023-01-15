@@ -15,19 +15,21 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('role_id', 2)->where('status','active')->get();
-        return view('user',['users'=>$users]);
+
+        return view('pages.admin.user', compact('users'));
     }
 
     public function registeredUser()
     {
         $registeredUsers = User::where('status','inactive')->where('role_id',2)->get();
-        return view('registered-user',['registeredUsers'=>$registeredUsers]);
+
+        return view('pages.admin.registered-user', compact('registeredUsers'));
     }
 
     public function show($slug)
     {
         $user = User::where('slug', $slug)->first();
-        return view('user-detail', ['user' => $user]);
+        return view('pages.admin.user-detail', compact('user'));
     }
 
     public function approve($slug)
@@ -35,32 +37,35 @@ class UserController extends Controller
         $user = User::where('slug', $slug)->first();
         $user->status = 'active';
         $user->save();
-        return redirect('user-detail/'.$slug)->with('status', 'User Approved!');
+        return redirect()->route('admin.user.detail', $slug)->with('status', 'User Approved!');
     }
 
     public function delete($slug)
     {
         $user = User::where('slug', $slug)->first();
-        return view('user-delete', ['user' => $user]);
+
+        return view('pages.admin.user-delete', compact('user'));
     }
 
     public function destroy($slug)
     {
         $user = User::where('slug', $slug)->first();
         $user->delete();
-        return redirect('users')->with('status', 'User Deleted!');
+        return redirect()->route('admin.users')->with('status', 'User Deleted!');
     }
 
     public function bannedUser()
     {
         $bannedUsers = User::onlyTrashed()->get();
-        return view('user-banned', ['bannedUsers' => $bannedUsers]);
+
+        return view('pages.admin.user-banned', compact('bannedUsers'));
     }
 
     public function restore($slug)
     {
         $user = User::withTrashed()->where('slug', $slug)->first();
         $user->restore();
-        return redirect('users')->with('status','User Restored Successfully');
+
+        return redirect()->route('admin.users')->with('status','User Restored Successfully');
     }
 }

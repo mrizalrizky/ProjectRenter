@@ -16,6 +16,6 @@ class DashboardController extends Controller
         $user_count = User::count();
         $rentLogs = RentLog::all();
 
-       return view('dashboard', compact('book_count', 'category_count', 'user_count', 'rentLogs'));
+       return view('pages.admin.dashboard', compact('book_count', 'category_count', 'user_count', 'rentLogs'));
     }
 }

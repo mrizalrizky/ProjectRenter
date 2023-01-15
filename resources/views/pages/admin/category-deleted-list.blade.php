@@ -3,9 +3,9 @@
 @section('title','Deleted Category')
 
 @section('content')
-    <h1>Deleted Category</h1>
+    <h1>Deleted Category List</h1>
     <div class="mt-5 d-flex justify-content-end">
-        <a href="/categories" class="btn btn-secondary me-3">Back</a>
+        <a href="{{ route('admin.category')}}" class="btn btn-secondary me-3">Back</a>
     </div>
     <div class="mt-5">
         <table class="table">
@@ -17,12 +17,12 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($deletedCategories as $item)
                 <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$item->name}}</td>
+                @forelse ($deletedCategories as $item)
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->name }}</td>
                     <td>
-                        <a href="category-restore/{{ $item->name }}">Restore</a>
+                        <a href="{{ route('admin.category.restore', $item->name) }}">Restore</a>
                     </td>
                 @empty
                     <td class="text-center" colspan="3">No Data</td>

@@ -12,16 +12,18 @@ class RentLogController extends Controller
     public function index()
     {
         $rentLogs = RentLog::all();
-        return view('rentlog', compact('rentLogs'));
+        return view('pages.admin.rentlog', compact('rentLogs'));
     }
 
     public function rentBook(Request $request) {
         RentLog::create([
-            'user_id'   => Auth::user()->id,
-            'book_id'   => $request->book_id,
-            'rent_date' => Carbon::now()
+            'user_id'     => Auth::user()->id,
+            'book_id'     => $request->book_id,
+            'rent_date'   => Carbon::now(),
+            'return_date' => Carbon::now()->addDays(3), // peminjam harus balikin buku h+3
+            'book_status' => 'Rented',
         ]);
 
-        return redirect()->back();
+        return redirect('/')->with('status', 'Book has been rented. Please return the book 3 days from now.');
     }
 }

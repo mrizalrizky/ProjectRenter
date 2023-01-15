@@ -3,7 +3,6 @@
 @section('title','Dashboard')
 
 @section('content')
-
     <h1>Welcome, {{Auth::user()->username}}</h1>
 
     <div class="row mt-5">
@@ -35,7 +34,7 @@
                     <div class="col-6"><i class="bi bi-people"></i></div>
                     <div class="col-6 d-flex flex-column justify-content-center align-items-end">
                         <div class="card-desc">Users</div>
-                        <div class="card-count">{{$user_count}}</div>
+                        <div class="card-count">{{ $user_count }}</div>
                     </div>
                 </div>
             </div>
@@ -52,25 +51,22 @@
                     <th>Book Title</th>
                     <th>Rent Date</th>
                     <th>Return Date</th>
-                    <th>Actual Return Date</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($rentLogs as $logs)
                 <tr>
+                @forelse ($rentLogs as $logs)
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $logs->user->username }}</td>
                     <td>{{ $logs->book->title }}</td>
                     <td>{{ $logs->rent_date }}</td>
                     <td>{{ $logs->return_date }}</td>
-                    @empty
-                    <td class="text-center" colspan="7">No Data</td>
-                    @endforelse
+                    <td>{{ $logs->book_status }}</td>
+                @empty
+                    <td class="text-center" colspan="6">No Data</td>
+                @endforelse
                 </tr>
-                {{-- <tr>
-                    <td colspan = "7" style="text-align: center">No Data</td>
-                </tr> --}}
             </tbody>
         </table>
     </div>

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('rent_date');
             $table->date('return_date')->nullable();
             $table->date('actual_return_date')->nullable();
+            $table->string('book_status');
             $table->timestamps();
         });
     }

@@ -3,6 +3,14 @@
 @section('title','Book List')
 
 @section('content')
+    <div class="mt-5">
+        @if( session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+        @endif
+    </div>
+
     <div class="my-5">
         <div class="row">
             @foreach ($books as $item)
