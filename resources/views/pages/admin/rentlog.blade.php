@@ -18,8 +18,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
             @forelse ($rentLogs as $logs)
+            <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $logs->user->username }}</td>
                 <td>{{ $logs->book->title }}</td>

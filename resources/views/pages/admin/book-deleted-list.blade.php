@@ -18,8 +18,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
                 @forelse ($deletedBooks as $item)
+                <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->book_code }}</td>
                     <td>{{ $item->title }}</td>

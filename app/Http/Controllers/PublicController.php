@@ -11,6 +11,6 @@ class PublicController extends Controller
     {
         $books = Book::all();
 
-        return view('book-list', compact('books'));
+        return view('pages.book-list', compact('books'));
     }
 }

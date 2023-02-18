@@ -18,8 +18,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
                 @forelse ($registeredUsers as $item)
+                <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->username }}</td>
                     <td>

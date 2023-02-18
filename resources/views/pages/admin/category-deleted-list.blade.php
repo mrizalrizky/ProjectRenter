@@ -17,8 +17,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
                 @forelse ($deletedCategories as $item)
+                <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->name }}</td>
                     <td>

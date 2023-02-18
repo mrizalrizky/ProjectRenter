@@ -9,7 +9,9 @@ class UserController extends Controller
 {
     public function profile()
     {
-        return view('profile');
+        $user = auth()->user();
+
+        return view('pages.profile', compact('user'));
     }
 
     public function index()

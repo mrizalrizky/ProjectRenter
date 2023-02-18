@@ -28,8 +28,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
                 @forelse ($users as $item)
+                <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$item->username  }}</td>
                     <td>

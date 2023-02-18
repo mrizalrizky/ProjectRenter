@@ -37,5 +37,4 @@
             <input type="text" class="form-control" readonly value="{{$user->status}}">
         </div>
     </div>
-    </div>
 @endsection

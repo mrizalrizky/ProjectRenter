@@ -68,5 +68,4 @@ Route::middleware('auth')->group(function(){
 
         Route::get('rent-logs',[RentLogController::class,'index'])->name('admin.rentlogs');
     });
-
-    });
+});

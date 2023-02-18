@@ -46,10 +46,10 @@
                         <a href="{{ route('admin.book.edit', $item->slug) }}">Edit</a>
                         <a href="{{ route('admin.book.delete', $item->slug) }}">Delete</a>
                     </td>
-                </tr>
                 @empty
                     <td class="text-center" colspan="6">No Data</td>
                 @endforelse
+                </tr>
             </tbody>
         </table>
     </div>
